@@ -1,6 +1,6 @@
 import streamlit as st
 
-import app_local_lib
+from app_local_lib import app_local_lib
 
 def main() :
     st.title('AI 책 추천')
@@ -21,5 +21,5 @@ def main() :
 
 
 
-    if __name__ == '__main__' :
+if __name__ == '__main__' :
         main()
