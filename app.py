@@ -1,5 +1,5 @@
 import streamlit as st
-
+from search import run_app
 from app_local_lib import app_local_lib
 
 def main() :
@@ -10,7 +10,7 @@ def main() :
     if choice == menu[0] :
             ()
     elif choice == menu[1] :
-            ()
+        run_app()
     elif choice == menu[2] :
             ()
     elif choice == menu[3] :
