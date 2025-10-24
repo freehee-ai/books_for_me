@@ -10,15 +10,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(page_title="도서 추천 시스템", layout="wide")
 
 # 데이터 폴더 경로
-data_dir = 'C:/Users/406/Documents/GitHub/books_for_me/data/인기대출도서'
+data_dir = './data/인기대출도서'
 
 # Streamlit UI
 st.title("📚 선택 도서 기반 유사도 추천 시스템")
 st.write("성별과 연령대를 선택하고 여러 도서를 선택하면, 비슷한 도서를 추천합니다.")
 
 # 사용자 입력
-age = ['10대이하', '2030대', '4050대', '60대이상']
-gender = ['여성', '남성']
+age = ['선택 없음', '10대이하', '2030대', '4050대', '60대이상']
+gender = ['선택 없음', '여성', '남성']
 
 age = st.selectbox('연령대를 선택하세요:', age)
 gender = st.selectbox('성별을 선택하세요:', gender)
@@ -31,7 +31,6 @@ print(filepath)
 
 # 파일 존재 확인
 if not os.path.exists(filepath):
-    st.error(f"{filename} 파일이 존재하지 않습니다. 경로 또는 파일명을 확인해주세요.")
     st.stop()
 
 # CSV 파일 로드
@@ -83,8 +82,8 @@ if selected_books:
     st.subheader("✨ 선택한 도서들과 유사한 도서 추천")
 
     for rank, (i, score) in enumerate(recommendations, start=1):
-        images = pd.read_csv('C:/Users/406/Documents/GitHub/books_for_me/data/book_image.zip', compression='zip')
-        with zipfile.ZipFile('C:/Users/406/Documents/GitHub/books_for_me/data/book_image.zip', 'r') as z:
+        images = pd.read_csv('./data/book_image.zip', compression='zip')
+        with zipfile.ZipFile('./data/book_image.zip', 'r') as z:
             print(z.namelist())
 
         url = images['IMAGE_URL']
